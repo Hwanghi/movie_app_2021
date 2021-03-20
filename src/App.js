@@ -1,36 +1,20 @@
-const foodLike = [
-  {
-    name: 'Kimchi',
-    image: 'kimchi.jpg'
-  },
-  {
-    name: 'Bibimbap',
-    image: 'bibimbap.jpg',
-  },
-  {
-    name: 'Kimbap',
-    image: 'kimbap.jpg',
-  },
-];
-function Food({name, picture}) {
-  return (
-    <div>
-      <h1>{name}</h1>
-      <img src={picture} />
-    </div>
-  );
-  
-  
-}
-function App() {
-  return (
-  <div> 
-    <h1>Hello react!</h1>
-    {foodLike.map(dish => (
-      <Food name={dish.name} picture={dish.image}/>
-    ))}
-  </div>
-  );
-}
+import React from 'react';
 
+class App extends React.Component {
+  state = {
+    isLoading: true,
+    movies: [],
+  };
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ isLoading: false});
+    }, 6000);
+  }
+  render() {
+    const { isLoading } = this.state;
+    return (
+    <div>{isLoading ? 'Loading...' : 'We are ready'}</div>
+    );
+  }
+}
 export default App;
